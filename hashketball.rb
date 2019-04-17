@@ -133,21 +133,12 @@ end
   end
 end
 
-def shoe_size(player)
-  array2 = []
+def shoe_size(name)
   game_hash.each do |location, team_data|
-      team_data.each do |attribute, values|
-          if attribute == :players
-            values.each do |person, data|
-              data.each do |i, j|
-                if person == player && i == :shoe
-                  array2.push(j)
-                end
-
-              end
-            end
-          end
+    team_data[:players].each do |player_name, player_stat|
+      if name == player_name
+       return player_stat[:shoe]
       end
+    end
   end
-  return array2[0]
 end
